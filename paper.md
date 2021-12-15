@@ -47,7 +47,9 @@ The Gillespie algorithm is a stochastic exact solution that is used simulate pro
 
 $$ P(\Delta t) = exp(\sum r_i) $$
 
-where $r_i$ for the mainland process is just the rate of mainland extinction ($\mu_M$) and for the island process are the rates of cladogenesis ($\lambda^c$), island extinction ($\mu$), colonisation ($\gamma$), and anagenesis ($\lambda^a$).  
+where $r_i$ for the mainland process is just the rate of mainland extinction ($\mu_M$) and for the island process are the rates of cladogenesis ($\lambda^c$), island extinction ($\mu$), colonisation ($\gamma$), and anagenesis ($\lambda^a$). After the time step ($\Delta$ t) is sampled the event is sampled, weighted by its rate relative to all other rates (i.e. $r_i / r_{total}$). The system is then updated for the algorithm repeats until the time step exceeds the total time of the simulation.
+
+Lastly, the data is formatted and the endemicity of each island colonist is assigned which is used in the `DAISIE` inference model.
 
 ## Acknowledgements
 
@@ -55,6 +57,16 @@ Thanks to Luis Valente and Shu Xie for helpful discussions. JWL was funded throu
 
 ## References
 
+Etienne R.S et al., 2022 DAISIE R package
+
+Gillespie 1966
+
+Gillespie 1967
+
+Gillespie 2007
+
 Lambert et al., 2022 The effects...
 
-Etienne R.S et al., 2022 DAISIE R package
+Valente et al., 2015 Ecol Lett
+
+Valente et al., 2020 Nature
