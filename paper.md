@@ -31,9 +31,13 @@ bibliography: paper.bib
 
 ## Summary
 
-Islands have long been study systems in evolutionary biology owing to their isolated, replicated and often idiosynchratic species and ecosystems. The evolutionary dynamics of island species can be reconstructed with molecular data from present day species. `DAISIEmainland` is an R package that simulates the colonisation and diversification species from a evolving mainland species pool to a focal island system. The package contains functionality to visualise simulated data, calculate and plot summary metrics of the simulated data. The data outputted in the `DAISIE` format (Etienne et al., 2022), for ease of application to the `DAISIE` R package which provides a suite of phylogenetic likelihood inference models for island biogeography.
+Islands have long been study systems in evolutionary biology because of their isolated, replicated and often idiosynchratic species and ecosystems. The evolutionary dynamics of island species can be reconstructed with molecular data from present day species. `DAISIEmainland` is an R package that simulates the colonisation and diversification species from a evolving mainland species pool to a focal island system. The package contains functionality to visualise simulated data, calculate and plot summary metrics of the simulated data. The data outputted in the `DAISIE` format (Etienne et al., 2022), for ease of application to the `DAISIE` R package which provides a suite of phylogenetic likelihood inference models for island biogeography.
 
-[Insert figure here]
+![island](figs/mainland.png)
+Figure 1: Mainland 
+
+![mainland](figs/island.png)
+Figure 2: Island
 
 ## Statement of Need
 
@@ -44,6 +48,8 @@ The first scientific application of the DAISIEmainland R package is to conduct a
 ## Simulation Algorithm
 
 The Gillespie algorithm is a stochastic exact solution that is used simulate processes (Gillespie, 1976, 1977, 2007). It has several applications and extensions (see Allen and Dytham, tau leaping paper). The Gillespie algorithm can be used in evolutionary biology, for example to efficiently simulate a birth-death process (ref). The island-mainland simulation in the DAISIEmainland package uses a two-part Gillespie simulation. Firstly the mainland, which is simulated under a Moran process (Moran, 1958) uses a Gillespie algorithm where the time steps are given by the rate of mainland extinction which is the only parameter that effects events on the mainland. The Moran process means every species extinction is immediately followed by a random species giving rise to two new species (speciation). The second Gillespie algorithm is for simulating the island, and involves exploiting the memoryless aspect of the Gillespie algorithm. The algorithm checks whether an changes have occurs on the mainland since the last time step and if so the system is updated and the returned to that point in time.
+
+The Gillespie algorithm that simulates the island was altered to accommodate the dynamic mainland pool. The time-steps sampled from an exponential distribution are bounded to not jump over changes on the mainland to ensure the present state of the system (i.e. species on mainland) is always up-to-date. This is valid owing to the Markov (memoryless) property of the Doob-Gillespie algorithm \citep{gillespie_exact_1977, gillespie_stochastic_2007}.
 
 $$ P(\Delta t) = exp(\sum r_i) $$
 
