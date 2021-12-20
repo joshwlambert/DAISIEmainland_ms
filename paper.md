@@ -22,10 +22,6 @@ date: 15 December 2021
 bibliography: paper.bib
 ---
 
-# `DAISIEmainland`: an R package for simulating macroevolution on islands with a dynamic mainland
-
-## Authors: Joshua W. Lambert, Rampal S. Etienne, Richèl J.C. Bilderbeek
-
 ## Summary
 
 Islands have long been study systems in evolutionary biology because of their isolated, replicated and often idiosynchratic species and ecosystems. The evolutionary history of island species can be reconstructed with genetic data producing a phylogenetic tree. `DAISIEmainland` is an R package that simulates the colonisation and diversification of species from a evolving mainland species pool to a focal island system. The package contains functionality to: (1) simulate phylogenetic data, (2) visualise data, (3) calculate and plot summary metrics of the simulated data. The data is outputted in the `DAISIE` format (@etienne_daisie_nodate), for ease of application to the `DAISIE` R package which provides a suite of phylogenetic likelihood inference models for island biogeography.
