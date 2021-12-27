@@ -22,64 +22,17 @@ date: 15 December 2021
 bibliography: paper.bib
 ---
 
-[RJCB: I feel the paper is too detailed in general.
-I suggest to show *what* the package does
-and explaining from there. I suggest to show these aspects, that I
-quote from the summary:]
-
-> (1) simulate the evolutionary history on islands, (2) visualise that history, 
-> (3) calculate and plot summary metrics of the simulated data
-
-[RJCB: Feel free to disagree, you are boss here!]
-
-
 # Summary
 
- * [ ] RJCB: To quote JOSS guidelines: 'Begin your paper with a summary of the 
-       high-level functionality of your software for a non-specialist reader. 
-       **Avoid jargon in this section**' (emphasis mine). 
-       I feel there is too much jargon in this section, 
-       and here is my suggestion to reduce it
-
-[**RJCB: this is my suggestion:**]
-Evolutionary biology is the study of, among others, speciation and extinction of a community of species. Ideally, such species communties are independent and isolated. Islands are a setting in which this happens naturally and, due to this, these are the most ideal systems to study within evolutionary biology. However, we cannot directly measure when an island was colonized, when a colonist species speciated, or when some of these new species went extinct. We can, however, use genetic data and many simplifying assumptions to reconstruct the evolutionary history of an island community. One of the common simplifying assumptions made (by, for example, the classical `DAISIE` R package [@etienne_daisie_2022]) is, that mainland species (i.e. the species that colonize the island) cannot go extinct. `DAISIEmainland`, however, allows the mainland species to go extinct and speciate. Providing all ingredients how evolutionary biology research, `DAISIEmainland` allows to (1) simulate the evolutionary history on islands, (2) visualise that history, (3) calculate and plot summary metrics of the simulated data, with the goal of being able to predict the evolutionary history of species better.
-[**RJCB: end of my suggestion**] 
-
-Islands have long been study systems in evolutionary biology because of their isolated, replicated and often idiosynchratic species and ecosystems. The evolutionary history of island species can be reconstructed with genetic data producing a phylogenetic tree. `DAISIEmainland` is an R package that simulates the colonisation and diversification of species from a evolving mainland species pool to a focal island system. The package contains functionality to: (1) simulate phylogenetic data, (2) visualise data, (3) calculate and plot summary metrics of the simulated data. The data is outputted in the `DAISIE` format [@etienne_daisie_2022], for ease of application to the `DAISIE` R package which provides a suite of phylogenetic likelihood inference models for island biogeography.
+Evolutionary biology is the study of, among others, speciation and extinction of a community of species. Ideally, such species communties are independent and isolated. Islands are a setting in which this happens naturally and, due to this, these are the most ideal systems to study within evolutionary biology. However, we cannot directly measure when an island was colonized, when a colonist species speciated, or when some of these new species went extinct. We can, however, use genetic data to reconstruct the evolutionary history of an island community. One of the common simplifying assumptions made (by, for example, the `DAISIE` R package [@etienne_daisie_2022]) is, that mainland species (i.e. the species that colonize the island) cannot go extinct. `DAISIEmainland`, however, is an R package allows the mainland species to go extinct and speciate. Providing a more realistic model of the island and the mainland for evolutionary biology research, `DAISIEmainland` allows the: (1) simulation of the evolutionary history on islands, (2) visualise that history, (3) calculate and plot summary metrics of the simulated data, with the goal of being able to simulate island and test current inference models in island biogeography (e.g. `DAISIE`).
 
 # Statement of Need
 
-Analysis of phylogenetic data has provided many insights in evolutionary biology. Central to these advances is the R language and the multitude of R packages which has facilitated the widespread utilisation these methods [@paradis_analysis_2006]. Phylogenetic research in the domain of island biogeography was lacking until the development of the Dynamic Assembly of Island biota through Speciation, Immigration and Extinction (DAISIE) model provided several key findings the macroevolution of island species [@valente_equilibrium_2015; @valente_simple_2020]. However, the performance and robustness of this island biogeography inference model is unknown when its assumptions are violated under biologically realistic scenarios. A central assumption of the DAISIE likelihood model is a static unevolving mainland pool of species. DAISIEmainland allows for the simulation of phylogenetic data of island species that can be used to test whether a dynamic mainland species pool causes poor model estimation performance. The package allows for testing multiple scenarios that may be faced by empiricists: mainland species go extinct before the present, mainland species are taxonomically known but not phylogenetically sampled, and mainland species are taxonomically undiscovered. The DAISIEmainland package has been applied to test the the robustness of the `DAISIE` model [@lambert_effect_2022] (see `vignette(topic = "inference_performance", package = "DAISIEmainland")` for details).
+Analysis of phylogenetic data has provided many insights in evolutionary biology. Central to these advances is the R language and the multitude of R packages which has facilitated the widespread utilisation these methods [@paradis_analysis_2006]. Phylogenetic research in the domain of island biogeography was lacking until the development of the Dynamic Assembly of Island biota through Speciation, Immigration and Extinction (DAISIE) model provided several key findings the macroevolution of island species [@valente_equilibrium_2015; @valente_simple_2020]. However, the performance and robustness of this island biogeography inference model is unknown when its assumptions are violated under biologically realistic scenarios. A central assumption of the DAISIE likelihood model is a static unevolving mainland pool of species. DAISIEmainland allows for the simulation of phylogenetic data of island species that can be used to test whether a dynamic mainland species pool causes poor model estimation performance. The package allows for testing multiple scenarios that may be faced by empiricists: mainland species go extinct before the present, mainland species are taxonomically known but not phylogenetically sampled, and mainland species are taxonomically undiscovered. The DAISIEmainland package has been applied to test the the robustness of the `DAISIE` model [@lambert_effect_2022] (see `vignette(topic = "inference_performance", package = "DAISIEmainland")` for details). `DAISIEmainland` outputs data in the `DAISIE` format [@etienne_daisie_2022], for ease of application to the `DAISIE` R package which provides a suite of phylogenetic likelihood inference models for island biogeography.
 
 # Simulation Algorithm
 
- * RJCB: I think the DG algorithm can be explained in less detail, to make
-   room to show what the package does, e.g. by showing some code and
-   resulting figures
-
 The Doob-Gillespie algorithm is a stochastic exact solution that is used to simulate continuous-time processes [@gillespie_general_1976; @gillespie_exact_1977; @gillespie_stochastic_2007], with several applications in biological modelling [@allen_efficient_2009]. The Doob-Gillespie algorithm can be used in evolutionary biology, for example to efficiently simulate a birth-death process. The island-mainland simulation in the DAISIEmainland package uses a two-part Doob-Gillespie simulation, one for the mainland and one for the island. Firstly the mainland, which is simulated under a Moran process [@moran_random_1958], whereby every species extinction is immediately followed by a random species giving rise to two new species (speciation).
-
-[RJCB: Here we can see this process in action:]
-
-```r
-# RJCB: remove this code from the final article
-
-library(DAISIEmainland)
-
-# Let the RNG sequences be identical for R versions 3 and 4
-set.seed(
-  4,
-  kind = "Mersenne-Twister",
-  normal.kind = "Inversion",
-  sample.kind = "Rejection"
-)
-mainland <- sim_mainland(
-  total_time = 1, # total simulation time
-  m = 4, # Number of mainland clades
-  mainland_ex = 1) # mainland extinction rate
-
-plot_mainland(mainland)
-```
 
 ![mainland](figs/mainland.png)
 Figure 1: Mainland 
