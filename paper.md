@@ -81,7 +81,7 @@ mainland <- sim_mainland(
 plot_mainland(mainland)
 ```
 
-![mainland](figs/mainland_pretty.png)
+![mainland](figs/mainland.png)
 Figure 1: Mainland 
 
 The island Doob-Gillespie algorithm is altered to accommodate the dynamic mainland pool. The time-steps are bounded to not jump over changes on the mainland to ensure the present state of the system (i.e. species on mainland) is always up-to-date. The algorithm checks whether any changes have occurs on the mainland since the last time step and if so the system is updated and the returned to the time at which the mainland last changed. This is valid owing to the Markov (memoryless) property of the Doob-Gillespie algorithm [@gillespie_general_1976; @gillespie_exact_1977; @gillespie_stochastic_2007].
