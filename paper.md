@@ -48,6 +48,6 @@ See `vignette(topic = "visualising_data", package = "DAISIEmainland")` for detai
 
 # Acknowledgements
 
-Thanks to Luis Valente, Pedro Neves and Shu Xie for helpful discussions. JWL was funded through a Study Abroad Studentship by the Leverhulme Trust and was also funded by a NWO VICI grant awarded to RSE. PSN was funded through a FCT PhD Studentship with reference SFRH/BD/129533/2017, co-funded by the Portuguese Ministério da Ciência, Tecnologia e Ensino Superior and the European Social Fund.
+Thanks to Luis Valente, Pedro Neves and Shu Xie for helpful discussions. JWL was funded through a Study Abroad Studentship by the Leverhulme Trust and was also funded by a NWO VICI grant awarded to RSE.
 
 # References
