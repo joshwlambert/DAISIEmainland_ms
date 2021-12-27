@@ -22,6 +22,17 @@ date: 15 December 2021
 bibliography: paper.bib
 ---
 
+[RJCB: I feel the paper is too detailed in general.
+I suggest to show *what* the package does
+and explaining from there. I suggest to show these aspects, that I
+quote from the summary:]
+
+> (1) simulate the evolutionary history on islands, (2) visualise that history, 
+> (3) calculate and plot summary metrics of the simulated data
+
+[RJCB: Feel free to disagree, you are boss here!]
+
+
 # Summary
 
  * [ ] RJCB: To quote JOSS guidelines: 'Begin your paper with a summary of the 
@@ -42,9 +53,35 @@ Analysis of phylogenetic data has provided many insights in evolutionary biology
 
 # Simulation Algorithm
 
+ * RJCB: I think the DG algorithm can be explained in less detail, to make
+   room to show what the package does, e.g. by showing some code and
+   resulting figures
+
 The Doob-Gillespie algorithm is a stochastic exact solution that is used to simulate continuous-time processes [@gillespie_general_1976; @gillespie_exact_1977; @gillespie_stochastic_2007], with several applications in biological modelling [@allen_efficient_2009]. The Doob-Gillespie algorithm can be used in evolutionary biology, for example to efficiently simulate a birth-death process. The island-mainland simulation in the DAISIEmainland package uses a two-part Doob-Gillespie simulation, one for the mainland and one for the island. Firstly the mainland, which is simulated under a Moran process [@moran_random_1958], whereby every species extinction is immediately followed by a random species giving rise to two new species (speciation).
 
-![mainland](figs/mainland.png)
+[RJCB: Here we can see this process in action:]
+
+```r
+# RJCB: remove this code from the final article
+
+library(DAISIEmainland)
+
+# Let the RNG sequences be identical for R versions 3 and 4
+set.seed(
+  4,
+  kind = "Mersenne-Twister",
+  normal.kind = "Inversion",
+  sample.kind = "Rejection"
+)
+mainland <- sim_mainland(
+  total_time = 1, # total simulation time
+  m = 4, # Number of mainland clades
+  mainland_ex = 1) # mainland extinction rate
+
+plot_mainland(mainland)
+```
+
+![mainland](figs/mainland_pretty.png)
 Figure 1: Mainland 
 
 The island Doob-Gillespie algorithm is altered to accommodate the dynamic mainland pool. The time-steps are bounded to not jump over changes on the mainland to ensure the present state of the system (i.e. species on mainland) is always up-to-date. The algorithm checks whether any changes have occurs on the mainland since the last time step and if so the system is updated and the returned to the time at which the mainland last changed. This is valid owing to the Markov (memoryless) property of the Doob-Gillespie algorithm [@gillespie_general_1976; @gillespie_exact_1977; @gillespie_stochastic_2007].
