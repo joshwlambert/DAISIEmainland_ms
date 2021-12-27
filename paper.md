@@ -9,9 +9,6 @@ authors:
   - name: Joshua W. Lambert
     orcid: 0000-0003-0872-7098
     affiliation: 1
-  - name: Rampal S. Etienne
-    orcid: 0000-0003-0872-7098
-    affiliations: 1
   - name: Richèl J.C. Bilderbeek
     orcid: 0000-0003-0872-7098
     affiliations: 1
@@ -48,6 +45,6 @@ See `vignette(topic = "visualising_data", package = "DAISIEmainland")` for detai
 
 # Acknowledgements
 
-Thanks to Luis Valente, Pedro Neves and Shu Xie for helpful discussions. JWL was funded through a Study Abroad Studentship by the Leverhulme Trust and was also funded by a NWO VICI grant awarded to RSE.
+JWL was funded through a Study Abroad Studentship by the Leverhulme Trust and was also funded by a NWO VICI grant awarded to RSE.
 
 # References
