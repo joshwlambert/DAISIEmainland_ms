@@ -24,6 +24,16 @@ bibliography: paper.bib
 
 # Summary
 
+ * [ ] RJCB: To quote JOSS guidelines: 'Begin your paper with a summary of the 
+       high-level functionality of your software for a non-specialist reader. 
+       **Avoid jargon in this section**' (emphasis mine). 
+       I feel there is too much jargon in this section, 
+       and here is my suggestion to reduce it
+
+[**RJCB: this is my suggestion:**]
+Islands have long been study systems in evolutionary biology because the each island is an isolated environment with its own evolutionary history. The evolutionary history of island species can be reconstructed with genetic data producing a phylogenetic tree. One of the assumptions made (by, for example, the classical `DAISIE` R package [@etienne_daisie_2022]) is, that (mainland) species that colonize the island come from a mainland where no species go extinct. `DAISIEmainland` relaxes this assumption by also simulating the evolutionary history of the mainland species. `DAISIEmainland` allows to (1) simulate the evolutionary history on islands, (2) visualise that history, (3) calculate and plot summary metrics of the simulated data. 
+[**RJCB: end of my suggestion**] 
+
 Islands have long been study systems in evolutionary biology because of their isolated, replicated and often idiosynchratic species and ecosystems. The evolutionary history of island species can be reconstructed with genetic data producing a phylogenetic tree. `DAISIEmainland` is an R package that simulates the colonisation and diversification of species from a evolving mainland species pool to a focal island system. The package contains functionality to: (1) simulate phylogenetic data, (2) visualise data, (3) calculate and plot summary metrics of the simulated data. The data is outputted in the `DAISIE` format [@etienne_daisie_2022], for ease of application to the `DAISIE` R package which provides a suite of phylogenetic likelihood inference models for island biogeography.
 
 # Statement of Need
