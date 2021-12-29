@@ -51,6 +51,9 @@ The `DAISIEmainland` simulation outputs two data sets: (1) contains full informa
 
 There are a number of summary metrics that are used to quantify the differences between the full information data set and the incomplete information data set simulated. These summary metrics include: the difference in normalised cumulative colonisations through time ($\Delta$nCTT), percentage of island colonisations appear to occur before the existence of the island due incomplete phylogenetic data, percentage of species on the island that are endemics and non-endemic. See `vignette(topic = "summary_metrics_visualisation", package = "DAISIEmainland")` for details.
 
+![endemics_percentage](figs/endemics_percentage.png)
+Figure 2: Percentage of endemic species on the island across different values of mainland extinction rate. The boxplot contain 500 island replicates. The left hand panel is for the data set with complete information (ideal) and the right hand panel is for the data set with incomplete information (empirical).
+
 # Acknowledgements
 
 JWL was funded through a Study Abroad Studentship by the Leverhulme Trust and was also funded by a NWO VICI grant awarded to RSE.
