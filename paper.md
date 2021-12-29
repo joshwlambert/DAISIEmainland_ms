@@ -71,6 +71,8 @@ See `vignette(topic = "visualising_data", package = "DAISIEmainland")` for detai
 
 # Calculate and plot summary metrics of the simulated data
 
+**[RJCB: need Josh's first wisdom here :-)]**
+
 # Acknowledgements
 
 JWL was funded through a Study Abroad Studentship by the Leverhulme Trust and was also funded by a NWO VICI grant awarded to RSE.
