@@ -31,10 +31,10 @@ Analysis of phylogenetic data has provided many insights in evolutionary biology
 
 DAISIEmainland simulates events on both the mainland and island, using the Doob-Gillespie algorithm.
 The Doob-Gillespie algorithm is a stochastic exact solution that is used to simulate continuous-time processes [@gillespie_general_1976; @gillespie_exact_1977; @gillespie_stochastic_2007].
-The mainland is simulated under a Moran process [@moran_random_1958], whereby every species extinction is immediately followed by a random species giving rise to two new species (speciation), therefore the number of species at any given time is the same. Figure 1 shows how this shapes the history of the mainland:
+The mainland is simulated under a Moran process [@moran_random_1958], whereby every species extinction is immediately followed by a random species giving rise to two new species (speciation), therefore the number of species at any given time is the same (figure 1).
 
 ![mainland](figs/mainland.png)
-Figure 1: Mainland 
+Figure 1: History of the mainland generated from a Moran process.
 
 The island Doob-Gillespie algorithm is run after the mainland algorithm and is altered to accommodate the dynamic mainland pool. The time-steps are bounded to not jump over changes on the mainland to ensure the present state of the system (i.e. species on mainland) is always up-to-date. The algorithm checks whether any changes have occurs on the mainland since the last time step and if so the system is updated and the returned to the time at which the mainland last changed. This is valid owing to the Markov (memoryless) property of the Doob-Gillespie algorithm [@gillespie_general_1976; @gillespie_exact_1977; @gillespie_stochastic_2007].
 
@@ -45,7 +45,7 @@ For both the island and mainland the timing and type of events are sampled from 
 
 The `DAISIEmainland` simulation outputs two data sets: (1) contains full information of all species colonisation times, and (2) an incomplete information data set which resembles what an empirist would have access to. These two data sets allow for the quantification of error in estimation when the empirists does not have access to all the data (Fig. 2).
 
-DAISIEmainland can show the simulated island and mainland histories, such as displayed in figure 1 and figure 2 of this article (see `vignette(topic = "simulation_data_visualisation", package = "DAISIEmainland")` for more).
+`DAISIEmainland` can show the simulated island and mainland histories, such as displayed in figure 1 and figure 2 of this article (see `vignette(topic = "simulation_data_visualisation", package = "DAISIEmainland")` for more).
 
 # Calculate and plot summary metrics of the simulated data
 
