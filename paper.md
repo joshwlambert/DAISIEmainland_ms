@@ -27,21 +27,51 @@ Evolutionary biology is the study of, among others, speciation and extinction of
 
 Analysis of phylogenetic data has provided many insights in evolutionary biology. Central to these advances is the R language and the multitude of R packages which has facilitated the widespread utilisation these methods [@paradis_analysis_2006]. Phylogenetic research in the domain of island biogeography was lacking until the development of the Dynamic Assembly of Island biota through Speciation, Immigration and Extinction (DAISIE) model provided several key findings the macroevolution of island species [@valente_equilibrium_2015; @valente_simple_2020]. However, the performance and robustness of this island biogeography inference model is unknown when its assumptions are violated under biologically realistic scenarios. A central assumption of the DAISIE likelihood model is a static unevolving mainland pool of species. DAISIEmainland allows for the simulation of phylogenetic data of island species that can be used to test whether a dynamic mainland species pool causes poor model estimation performance. The package allows for testing multiple scenarios that may be faced by empiricists: mainland species go extinct before the present, mainland species are taxonomically known but not phylogenetically sampled, and mainland species are taxonomically undiscovered. The DAISIEmainland package has been applied to test the the robustness of the `DAISIE` model [@lambert_effect_2022] (see `vignette(topic = "inference_performance", package = "DAISIEmainland")` for details). `DAISIEmainland` outputs data in the `DAISIE` format [@etienne_daisie_2022], for ease of application to the `DAISIE` R package which provides a suite of phylogenetic likelihood inference models for island biogeography.
 
-# Simulation Algorithm
+## Simulation of the evolutionary history on islands
 
-The Doob-Gillespie algorithm is a stochastic exact solution that is used to simulate continuous-time processes [@gillespie_general_1976; @gillespie_exact_1977; @gillespie_stochastic_2007], with several applications in biological modelling [@allen_efficient_2009]. The Doob-Gillespie algorithm can be used in evolutionary biology, for example to efficiently simulate a birth-death process. The island-mainland simulation in the DAISIEmainland package uses a two-part Doob-Gillespie simulation, one for the mainland and one for the island. Firstly the mainland, which is simulated under a Moran process [@moran_random_1958], whereby every species extinction is immediately followed by a random species giving rise to two new species (speciation).
+**[RJCB: I feel a vignette is a superior place to show the detailed mathematics, similar to the (not yet existing) plotting vignette]**
+
+DAISIEmainland simulates events (i.e. speciation, extinction and immigration)
+on both the mainland and island, using the Doob-Gillespie algorithm.
+The Doob-Gillespie algorithm is a stochastic exact solution that is used to simulate continuous-time processes [@gillespie_general_1976; @gillespie_exact_1977; @gillespie_stochastic_2007].
+The mainland is simulated under a Moran process [@moran_random_1958], whereby every species extinction is immediately followed by a random species giving rise to two new species (speciation). Figure 1 shows how this shapes the history of the mainland:
+the number of species at any given times is the same.
 
 ![mainland](figs/mainland.png)
 Figure 1: Mainland 
 
+
 The island Doob-Gillespie algorithm is altered to accommodate the dynamic mainland pool. The time-steps are bounded to not jump over changes on the mainland to ensure the present state of the system (i.e. species on mainland) is always up-to-date. The algorithm checks whether any changes have occurs on the mainland since the last time step and if so the system is updated and the returned to the time at which the mainland last changed. This is valid owing to the Markov (memoryless) property of the Doob-Gillespie algorithm [@gillespie_general_1976; @gillespie_exact_1977; @gillespie_stochastic_2007].
+**[RJCB: is this correct? The mainland is simulated first, which is a great simplification to prevent that 'time-steps are bounded']**
 
 ![island](figs/island.png)
 Figure 2: Island
 
-For both the island and mainland Doob-Gillespie algorithms time steps are sampled from an exponential distribution with rate $\lambda = \sum_j r_j$, where $r_j$ are the rates, for the mainland process this is just the rate of mainland extinction ($\mu_M$), this is the only mainland parameter, whereas, for the island algorithm $r_j$ are the rates of cladogenesis ($\lambda^c$), island extinction ($\mu$), colonisation ($\gamma$), and anagenesis ($\lambda^a$). After the time step ($\Delta$ t) is sampled the event is sampled from a dynamic discrete probability distribution, weighted by its rate (propensity) relative to all other rates (i.e. $r_i / \sum_j r_j$). The system is then updated for the algorithm repeats until the time step exceeds the total time of the simulation. Lastly, the data is formatted and the endemicity of each island colonist is assigned which is used in the `DAISIE` inference model. The `DAISIEmainland` simulation outputs two data sets: (1) contains full information of all species colonisation times, and (2) an incomplete information data set which resembles what an empirist would have access to. These two data sets allow for the quantification of error in estimation when the empirists does not have access to all the data (Fig. 2).
+For both the island and mainland the timing and type of events are 
+sampled from an exponential distribution, based on the rates of all events
+possible.
+For the mainland process, mainland extinction rate ($\mu_M$) is the only parameter,
+whereas, for the island there are rates of cladogenesis ($\lambda^c$) (i.e. 
+an island species splitting up in two), 
+island extinction ($\mu$), colonisation ($\gamma$), and anagenesis ($\lambda^a$) (i.e.
+an island species became different from its mainland ancestor).
+The Doob-Gillespie samples time steps and events 
+until the time step exceeds the total time of the simulation. 
+The simulated data is formatted and the endemicity of each island colonist is assigned which is used in the `DAISIE` inference model. 
 
+The `DAISIEmainland` simulation outputs two data sets: (1) contains full information of all species colonisation times, and (2) an incomplete information data set which resembles what an empirist would have access to. These two data sets allow for the quantification of error in estimation when the empirists does not have access to all the data (Fig. 2).
+
+# Visualise that history
+
+DAISIEmainland can show the simulated island and mainland histories,
+such as displayed in the figures of this article.
+
+**[RJCB: note that this vignette does not exist yet]**
 See `vignette(topic = "visualising_data", package = "DAISIEmainland")` for details.
+
+# Calculate and plot summary metrics of the simulated data
+
+**[RJCB: need Josh's first wisdom here :-)]**
 
 # Acknowledgements
 
