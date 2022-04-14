@@ -9,9 +9,6 @@ authors:
   - name: Joshua W. Lambert
     orcid: 0000-0003-0872-7098
     affiliation: 1
-  - name: Richèl J.C. Bilderbeek
-    orcid: 0000-0003-0872-7098
-    affiliations: 1
   - name: Pedro Santos Neves
     orcid: 0000-0003-2561-4677
     affiliations: 1
