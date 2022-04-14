@@ -12,9 +12,23 @@ authors:
   - name: Richèl J.C. Bilderbeek
     orcid: 0000-0003-0872-7098
     affiliations: 1
+  - name: Pedro Santos Neves
+    orcid: 0000-0003-2561-4677
+    affiliations: 1
+  - name: Rampal S. Etienne
+    orcid: 0000-0003-2142-7612
+    affiliations: 1
+  - name: Luis Valente
+    orcid: 0000-0003-4247-8785
+    affiliations: 1,2
+  - name: Richèl J.C. Bilderbeek
+    orcid: 0000-0003-0872-7098
+    affiliations: 1
 affiliations:
  - name: Groningen Institute for Evolutionary Life Sciences, University of Groningen, Box 11103, 9700 CC Groningen, The Netherlands
    index: 1
+  - name: Naturalis Biodiversity Center, Darwinweg 2, 2333 CR Leiden, The Netherlands
+   index: 2
 date: 15 December 2021
 bibliography: paper.bib
 ---
