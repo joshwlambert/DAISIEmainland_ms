@@ -27,7 +27,7 @@ authors:
 affiliations:
  - name: Groningen Institute for Evolutionary Life Sciences, University of Groningen, Box 11103, 9700 CC Groningen, The Netherlands
    index: 1
-  - name: Naturalis Biodiversity Center, Darwinweg 2, 2333 CR Leiden, The Netherlands
+- name: Naturalis Biodiversity Center, Darwinweg 2, 2333 CR Leiden, The Netherlands
    index: 2
 date: 15 December 2021
 bibliography: paper.bib
