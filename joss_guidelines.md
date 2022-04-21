@@ -7,10 +7,10 @@ But please read these instructions carefully for a streamlined submission.
 ## Submission requirements
 
 - [x] The software must be open source as per the [OSI definition](https://opensource.org/osd).
-- [ ] The software must have an **obvious** research application.
+- [x] The software must have an **obvious** research application.
 
 - [x] You must be a major contributor to the software you are submitting, and have a GitHub account to participate in the review process.
-- [ ] Your paper must not focus on new research results accomplished with the software.
+- [x] Your paper must not focus on new research results accomplished with the software.
 - [x] Your paper (`paper.md` and BibTeX files, plus any figures) must be hosted in a Git-based repository together with your software (although they may be in a short-lived branch which is never merged with the default).
 
 In addition, the software associated with your submission must:
@@ -24,7 +24,7 @@ In addition, the software associated with your submission must:
 
 JOSS publishes articles about research software. This definition includes software that: solves complex modeling problems in a scientific context (physics, mathematics, biology, medicine, social science, neuroscience, engineering); supports the functioning of research instruments or the execution of research experiments; extracts knowledge from large data sets; offers a mathematical library, or similar. While useful for many areas of research, pre-trained machine learning models are not in-scope for JOSS. 
 
- * [ ] RJCB: problem solved must be in text
+ * [x] RJCB: problem solved must be in text
 
 ### Substantial scholarly effort
 
@@ -38,14 +38,19 @@ As a rule of thumb, JOSS' minimum allowable contribution should represent **not 
 - [x] Number of commits.
 - [x] Number of authors.
 - [x] Total lines of code (LOC). Submissions under 1000 LOC will usually be flagged, those under 300 LOC will be desk rejected.
-- [ ] Whether the software has already been cited in academic papers.
-- [ ] Whether the software is sufficiently useful that it is _likely to be cited_ by your peer group.
+- [x] Whether the software has already been cited in academic papers.
+
+> The DAISIEmainland package has been applied to test the robustness of the DAISIE model [@lambert_effect_2022] 
+
+- [x] Whether the software is sufficiently useful that it is _likely to be cited_ by your peer group.
 
 In addition, JOSS requires that software should be feature-complete (i.e., no half-baked solutions), packaged appropriately according to common community standards for the programming language being used (e.g., [Python](https://packaging.python.org), [R](https://r-pkgs.org/index.html)), and designed for maintainable extension (not one-off modifications of existing tools). "Minor utility" packages, including "thin" API clients, and single-function packages are not acceptable.
 
 ### Co-publication of science, methods, and software
 
- * [ ] RJCB: mention the academic article
+ * [x] RJCB: mention the academic article
+
+> The DAISIEmainland package has been applied to test the robustness of the DAISIE model [@lambert_effect_2022] 
 
 Sometimes authors prepare a JOSS publication alongside a contribution describing a science application, details of algorithm development, and/or methods assessment. In this circumstance, JOSS considers submissions for which the implementation of the software itself reflects a substantial scientific effort. This may be represented by the design of the software, the implementation of the algorithms, creation of tutorials, or any other aspect of the software. We ask that authors indicate whether related publications (published, in review, or nearing submission) exist as part of submitting to JOSS.
 
@@ -79,16 +84,16 @@ Before you submit, you should:
 .. important:: Begin your paper with a summary of the high-level functionality of your software for a non-specialist reader. Avoid jargon in this section.
 ```
 
- * [ ] RJCB: TODO
+ * [x] Done if the reviewer agrees
 
 JOSS welcomes submissions from broadly diverse research areas. For this reason, we require that authors include in the paper some sentences that explain the software functionality and domain of use to a non-specialist reader. We also require that authors explain the research applications of the software. The paper should be between 250-1000 words. Authors submitting papers significantly longer than 1000 words may be asked to reduce the length of their paper.
 
- * [ ] RJCB: number of words: 893
+ * [x] RJCB: number of words: 1330
 
 Your paper should include:
 
 - [x] A list of the authors of the software and their affiliations, using the correct format (see the example below).
-- [ ] A summary describing the high-level functionality and purpose of the software for a diverse, *non-specialist audience*.
+- [x] A summary describing the high-level functionality and purpose of the software for a diverse, *non-specialist audience*.
 - A *Statement of Need* section that clearly illustrates the research purpose of the software.
 - A list of key references, including to other software addressing related needs. Note that the references should include full names of venues, e.g., journals and conferences, not abbreviations only understood in the context of a specific discipline.
 - Mention (if applicable) a representative set of past or ongoing research projects using the software and recent scholarly publications enabled by it.
