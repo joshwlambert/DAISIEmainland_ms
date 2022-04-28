@@ -65,6 +65,6 @@ Figure 3: Percentage of endemic species on the island across different values of
 
 # Acknowledgements
 
-We thank Pedro Neves for comments. JWL was funded through a Study Abroad Studentship by the Leverhulme Trust and an NWO VICI grant awarded to Rampal S. Etienne.
+JWL was funded through a Study Abroad Studentship by the Leverhulme Trust and an NWO VICI grant awarded to Rampal S. Etienne.
 
 # References
